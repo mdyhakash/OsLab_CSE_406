@@ -2,7 +2,7 @@ function fcfs(p) {
   p.sort((a, b) => a.arrivalTime - b.arrivalTime);
   let time = 0;
 
-  p.forEach(p => {
+  p.map(p => {
     if (time < p.arrivalTime) {
       time = p.arrivalTime;
     }
