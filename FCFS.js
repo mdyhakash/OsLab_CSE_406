@@ -1,21 +1,26 @@
 function fcfs(p) {
   p.sort((a, b) => a.arrivalTime - b.arrivalTime);
   let time = 0;
+  let totalWaitingTime = 0;
 
   p.map(p => {
     if (time < p.arrivalTime) {
       time = p.arrivalTime;
     }
-    
+
     time += p.burstTime;
     p.completionTime = time;
     p.turnaroundTime = p.completionTime - p.arrivalTime;
     p.waitingTime = p.turnaroundTime - p.burstTime;
-    console.log(`Process ${p.pid} CT - ${time} TAT - ${p.turnaroundTime} WT - ${p.waitingTime}`);
-    
-  });
-}
 
+    totalWaitingTime += p.waitingTime;
+
+    console.log(`Process ${p.pid} CT: ${p.completionTime} TAT: ${p.turnaroundTime} WT: ${p.waitingTime}`);
+  });
+
+  const avgWT = totalWaitingTime / p.length;
+  console.log(`Average Waiting Time: ${avgWT.toFixed(2)}`);
+}
 
 const processesFCFS = [
   { pid: 'P1', arrivalTime: 0, burstTime: 3 },
@@ -25,4 +30,3 @@ const processesFCFS = [
 ];
 
 fcfs(processesFCFS);
-    
