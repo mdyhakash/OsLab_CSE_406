@@ -109,3 +109,73 @@ roundRobin(processesRR, quantum);
 ### Report
 **You can find the detailed project report here:**
 [RoundRobin](https://docs.google.com/document/d/1oTX-MybcYBJ7Q2yodE8fcLCWp9NJbiwVHa3l3rgSD-E/edit?usp=sharing)
+
+
+
+# Disk Scheduling Algorithms Collection
+
+Welcome to the Disk Scheduling Algorithms repository!  
+Here you'll find implementations of various disk scheduling algorithms in JavaScript.  
+More algorithms will be added over time.
+
+---
+
+## Algorithms
+
+### 1. First-Come, First-Serve (FCFS)
+
+- **Type:** Non-preemptive  
+- **Description:**  
+  Disk I/O requests are processed in the order they arrive in the queue. The disk head moves from one request to the next sequentially without reordering.  
+- **Characteristics:**  
+  - Simple and easy to implement  
+  - Can result in high total head movement if requests are far apart  
+  - Fair in the sense that requests are served in arrival order  
+
+**How it works:**  
+- Start at the initial head position  
+- Move the head sequentially to each requested track in order  
+- Calculate total head movement (seek operations)  
+
+**Example Usage:**
+
+```js
+const requests = [176, 39, 114, 90, 26];
+const startHead = 39;
+
+fcfs(requests, startHead);
+```
+### Report
+**You can find the detailed project report here:**
+[FCFS Disk Scheduling](https://docs.google.com/document/d/1epo-ktcJsWr_pIlthfFzivruhcwrAdV8TTirtrxn2t4/edit?usp=sharing)
+
+
+### 2. Shortest Seek Time First (SSTF)
+
+- **Type:** Non-preemptive  
+- **Description:**  
+  The disk head moves to the request that is closest to its current position next. This minimizes the total seek time.  
+- **Characteristics:**  
+  - Reduces total head movement compared to FCFS  
+  - Can cause starvation if requests keep arriving near the current head position  
+  - Requires dynamically checking the nearest request at each step  
+
+**How it works:**  
+- Start at the initial head position
+- Find the request closest to the current head position
+- Move the head to that request and mark it as completed
+- Repeat until all requests are processed
+- Calculate total head movement (seek operations) 
+
+**Example Usage:**
+
+```js
+const requests = [176, 49, 114, 90, 26, 39];
+const startHead = 39;
+
+sstf(requests, startHead);
+```
+
+### Report
+**You can find the detailed project report here:**
+[SSTF Disk Scheduling](https://docs.google.com/document/d/1C5QIO869HrhaurIVfB2q0NLa8zOIGNVU0S_G9otskUk/edit?usp=sharing)
