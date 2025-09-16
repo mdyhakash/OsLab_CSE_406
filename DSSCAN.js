@@ -1,7 +1,6 @@
 function dsScan(requests, startHead, direction) {
     let head = startHead;
     let totalMovement = 0;
-    let seekSequence = [];
 
     const filteredRequests = requests.filter(r => r !== startHead).sort((a, b) => a - b);
 
@@ -16,12 +15,12 @@ function dsScan(requests, startHead, direction) {
         for (let i = 0; i < left.length; i++) {
             totalMovement += Math.abs(head - left[i]);
             head = left[i];
-            seekSequence.push(head);
+            
         }
         for (let i = 0; i < right.length; i++) {
             totalMovement += Math.abs(head - right[i]);
             head = right[i];
-            seekSequence.push(head);
+            
         }
     } else {
         for (let i = 0; i < right.length; i++) {
@@ -32,11 +31,11 @@ function dsScan(requests, startHead, direction) {
         for (let i = 0; i < left.length; i++) {
             totalMovement += Math.abs(head - left[i]);
             head = left[i];
-            seekSequence.push(head);
+            
         }
     }
 
-    console.log("Seek Sequence:", seekSequence.join(" -> "));
+    
     console.log("Total Seek Operations:", totalMovement);
 }
 
