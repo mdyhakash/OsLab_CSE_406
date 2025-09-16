@@ -26,7 +26,7 @@ function dsScan(requests, startHead, direction) {
         for (let i = 0; i < right.length; i++) {
             totalMovement += Math.abs(head - right[i]);
             head = right[i];
-            seekSequence.push(head);
+            
         }
         for (let i = 0; i < left.length; i++) {
             totalMovement += Math.abs(head - left[i]);
